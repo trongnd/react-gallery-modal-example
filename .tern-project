@@ -1,0 +1,10 @@
+{
+  "ecmaVersion": 7,
+  "libs": [
+    "browser",
+    "chai",
+    "jquery",
+    "underscore"
+  ],
+  "plugins": {}
+}
