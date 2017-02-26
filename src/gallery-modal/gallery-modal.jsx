@@ -13,10 +13,14 @@ class GalleryModal extends Component {
     items: PropTypes.arrayOf(PropTypes.any).isRequired,
     renderItem: PropTypes.func.isRequired,
     onClickClose: PropTypes.func,
+    pageItems: PropTypes.number,
+    maximumItems: PropTypes.number,
   };
 
   static defaultProps = {
     onClickClose: noop,
+    pageItems: 25,
+    maximumItems: Infinity,
   };
 
   constructor(props) {
@@ -49,7 +53,7 @@ class GalleryModal extends Component {
   }
 
   render() {
-    const { visible, items, renderItem, onClickClose } = this.props;
+    const { visible, items, pageItems, maximumItems, renderItem, onClickClose } = this.props;
     const columns = this.calulateViewerColumns();
     const height = this.calculateModalHeight();
 
@@ -61,6 +65,8 @@ class GalleryModal extends Component {
           <div style={{ height }}>
             <GalleryViewer
               items={items}
+              pageItems={pageItems}
+              maximumItems={maximumItems}
               columns={columns}
               renderItem={renderItem}
             />

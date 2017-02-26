@@ -54,6 +54,8 @@ class DemoApp extends Component {
           items={items}
           renderItem={this.renderGalleryItem}
           onClickClose={this.onClickCloseModal}
+          pageItems={25}
+          maximumItems={125}
         />
       </div>
     );

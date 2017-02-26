@@ -15,8 +15,6 @@ class GalleryViewer extends Component {
   };
 
   static defaultProps = {
-    pageItems: 25,
-    maximumItems: Infinity,
     columns: 5,
     threshold: 100,
   };
