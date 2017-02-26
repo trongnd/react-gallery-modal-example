@@ -59,19 +59,28 @@ class GalleryViewer extends Component {
     this.setState({ dataSource });
   }
 
+  @autobind
+  setRefScroll(ref) {
+    this.scroller = ref;
+  }
+
   render() {
     const { columns, renderItem } = this.props;
     const items = this.state.dataSource.getItems();
 
-    const gridItems = items.map((item, index) => (
-      <Grid.Column key={item.key || item.id || index}>
-        { renderItem(item) }
-      </Grid.Column>
-    ));
+    const gridItems = items.map((item, index) => {
+      const key = ('id' in item) ? item.id : index;
+
+      return (
+        <Grid.Column key={key}>
+          { renderItem(item) }
+        </Grid.Column>
+      );
+    });
 
     return (
       <div
-        ref={ref => { this.scroller = ref }}
+        ref={this.setRefScroll}
         onScroll={this.onScroll}
         className="gallery-viewer"
       >
